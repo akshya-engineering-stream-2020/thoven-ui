@@ -1,0 +1,14 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'active': selectedTab == 'myCards'}" (click)="goMyCardsComponent()">MyCards</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'active': selectedTab == 'feature'}" (click)="goFeatureComponent()">Feature</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'active': selectedTab == 'tribe'}" (click)="goTribeComponent()">Tribe</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'active': selectedTab == 'support'}" (click)="goSupportComponent()">Support</a>
+  </li>
+</ul>
