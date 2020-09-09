@@ -1,0 +1,60 @@
+<div class="example-button-row d-flex justify-content-end mr-5">
+  <div class="example-flex-container">
+    <div class="example-button-container">
+      <button type="button" mat-fab color="primary" ngbPopover="Click me, to add new card!"
+              triggers="mouseenter:mouseleave" (click)="openScrollableContent(addNewCard)">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #addNewCard let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Add Card</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="inputAddress">Card Name</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+      </div>
+      <div class="form-group">
+        <label for="inputAddress2">URL</label>
+        <textarea type="text" class="form-control" id="inputAddress2"
+                  placeholder="Apartment, studio, or floor"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="inputAddress2">Description</label>
+        <textarea type="text" class="form-control" id="inputAddress3"
+                  placeholder="Apartment, studio, or floor"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="inputState">Group</label>
+        <select id="inputState" class="form-control">
+          <option selected>A</option>
+          <option>B</option>
+          <option>C</option>
+          <option>D</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="inputState1">Level</label>
+        <select id="inputState1" class="form-control">
+          <option selected>none</option>
+          <option>feature</option>
+          <option>tribe</option>
+          <option>support</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-outline-primary">Add</button>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
