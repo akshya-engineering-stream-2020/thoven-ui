@@ -3,14 +3,14 @@ sudo: false
 
 language: node_js
 node_js:
-  - '12.18.3'
+  - "12"
 
-addons:
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
+branches:
+  only:
+    - master
+
+before_script:
+  - npm install -g @angular/cli
 
 cache:
   directories:
