@@ -27,10 +27,10 @@
         <ul class="list-group">
           <p>hello AKSHYA</p>
           <li>
-            <a>Dashboard</a>
+            <a class="nav-link" [ngClass]="{'nav-link-highlight': selectedTab == 'dashboard'}"  (click)="goDashboardComponent()">Dashboard</a>
           </li>
           <li>
-            <a>Create Group</a>
+            <a class="nav-link" [ngClass]="{'nav-link-highlight': selectedTab == 'createGroup'}"  (click)="goCreateGroupComponent()">Create Group</a>
           </li>
           <li>
             <a>Group Space</a>

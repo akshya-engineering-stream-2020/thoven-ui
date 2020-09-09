@@ -5,6 +5,7 @@ import {MyCardsComponent} from './my-cards/my-cards.component';
 import {FeatureComponent} from './feature/feature.component';
 import {TribeComponent} from './tribe/tribe.component';
 import {SupportComponent} from './support/support.component';
+import {CreateGroupComponent} from './create-group/create-group.component';
 
 const routes: Routes = [
   {path: 'home', component: MainNavbarComponent, children: [
@@ -12,6 +13,7 @@ const routes: Routes = [
       {path: 'feature', component: FeatureComponent},
       {path: 'tribe', component: TribeComponent},
       {path: 'support', component: SupportComponent},
+      {path: 'create-group', component: CreateGroupComponent}
     ]},
   {path: '', redirectTo: '/home/myCards', pathMatch: 'full'}
 ];

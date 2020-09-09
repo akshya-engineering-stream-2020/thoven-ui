@@ -15,6 +15,7 @@ import {TribeComponent} from './tribe/tribe.component';
 import {SupportComponent} from './support/support.component';
 import {DashboardNavbarComponent} from './dashboard-navbar/dashboard-navbar.component';
 import {DashboardAddButtonComponent} from './dashboard-add-button/dashboard-add-button.component';
+import {CreateGroupComponent} from './create-group/create-group.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {DashboardAddButtonComponent} from './dashboard-add-button/dashboard-add-
     TribeComponent,
     SupportComponent,
     DashboardNavbarComponent,
-    DashboardAddButtonComponent
+    DashboardAddButtonComponent,
+    CreateGroupComponent
   ],
   imports: [
     BrowserModule,
