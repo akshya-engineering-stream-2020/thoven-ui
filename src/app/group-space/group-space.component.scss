@@ -1,0 +1,43 @@
+.group-card-space {
+  margin-left: -60px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.card-hover {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.card-hover:hover {
+  opacity: 0.6;
+  background: #04204e;
+  color: white;
+}
+
+.group-card {
+  height: 400px;
+  overflow-y: auto;
+}
+
+.icon {
+  cursor: pointer;
+  width: 2rem;
+  height: 3rem;
+  font-size: 2rem;
+  padding: 0;
+  transition: all 0.3s;
+}
+
+.icon:hover {
+  color: #7386D5;
+}
+
+app-dashboard-add-button{
+  margin-left: 90%;
+}
+
+.members-button {
+  margin-left: 60%;
+  padding-top: 5px;
+}

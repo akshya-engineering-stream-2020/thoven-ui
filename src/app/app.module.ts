@@ -16,6 +16,7 @@ import {SupportComponent} from './support/support.component';
 import {DashboardNavbarComponent} from './dashboard-navbar/dashboard-navbar.component';
 import {DashboardAddButtonComponent} from './dashboard-add-button/dashboard-add-button.component';
 import {CreateGroupComponent} from './create-group/create-group.component';
+import {GroupSpaceComponent} from './group-space/group-space.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {CreateGroupComponent} from './create-group/create-group.component';
     SupportComponent,
     DashboardNavbarComponent,
     DashboardAddButtonComponent,
-    CreateGroupComponent
+    CreateGroupComponent,
+    GroupSpaceComponent
   ],
   imports: [
     BrowserModule,
