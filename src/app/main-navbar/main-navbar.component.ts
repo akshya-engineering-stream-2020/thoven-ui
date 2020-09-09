@@ -24,4 +24,9 @@ export class MainNavbarComponent implements OnInit {
     this.router.navigate(['home/create-group']);
   }
 
+  goGroupSpaceComponent(): void {
+    this.selectedTab = 'groupSpace';
+    this.router.navigate(['home/group-space']);
+  }
+
 }
