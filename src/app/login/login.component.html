@@ -1,0 +1,13 @@
+<div class="login-page">
+  <div class="form">
+    <h1 class="login-title">thoven.</h1>
+    <form role="form" #userForm="ngForm" (ngSubmit)="onSubmit()">
+      <input type="text" autocomplete="off" required #userName="ngModel" placeholder="username"
+             name="userName" [(ngModel)]="userModel.userName"/>
+
+      <input type="password" placeholder="password" required #password="ngModel"
+             name="password" [(ngModel)]="userModel.password"/>
+      <button type="submit">login</button>
+    </form>
+  </div>
+</div>
