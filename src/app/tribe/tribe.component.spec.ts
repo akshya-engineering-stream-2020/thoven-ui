@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TribeComponent } from './tribe.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('TribeComponent', () => {
   let component: TribeComponent;
@@ -8,6 +9,7 @@ describe('TribeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ],
       declarations: [ TribeComponent ]
     })
     .compileComponents();

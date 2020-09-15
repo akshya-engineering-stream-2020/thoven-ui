@@ -5,6 +5,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -17,6 +22,7 @@ import {DashboardNavbarComponent} from './dashboard-navbar/dashboard-navbar.comp
 import {DashboardAddButtonComponent} from './dashboard-add-button/dashboard-add-button.component';
 import {CreateGroupComponent} from './create-group/create-group.component';
 import {GroupSpaceComponent} from './group-space/group-space.component';
+import {LoginComponent} from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +35,8 @@ import {GroupSpaceComponent} from './group-space/group-space.component';
     DashboardNavbarComponent,
     DashboardAddButtonComponent,
     CreateGroupComponent,
-    GroupSpaceComponent
+    GroupSpaceComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -38,9 +45,15 @@ import {GroupSpaceComponent} from './group-space/group-space.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatButtonToggleModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

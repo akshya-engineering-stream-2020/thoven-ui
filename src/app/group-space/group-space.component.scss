@@ -33,11 +33,29 @@
   color: #7386D5;
 }
 
-app-dashboard-add-button{
+app-dashboard-add-button {
   margin-left: 90%;
 }
 
 .members-button {
   margin-left: 60%;
   padding-top: 5px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+
+.example-container {
+  margin-top: 60px;
+  margin-left: -10%;
+  height: 350px;
+  width: 80%;
+  overflow: auto;
 }
