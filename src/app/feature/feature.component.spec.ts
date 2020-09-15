@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FeatureComponent } from './feature.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('FeatureComponent', () => {
   let component: FeatureComponent;
@@ -8,6 +9,7 @@ describe('FeatureComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ],
       declarations: [ FeatureComponent ]
     })
     .compileComponents();
