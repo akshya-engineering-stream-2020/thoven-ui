@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CreateGroupComponent } from './create-group.component';
+import {CreateGroupComponent} from './create-group.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {FormsModule} from '@angular/forms';
 
 describe('CreateGroupComponent', () => {
   let component: CreateGroupComponent;
@@ -8,6 +10,7 @@ describe('CreateGroupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule, FormsModule ],
       declarations: [ CreateGroupComponent ]
     })
     .compileComponents();

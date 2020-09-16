@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     this.jwtTokenClientService.generateToken(this.userModel).subscribe(
       token => {
-        console.log('tokenn' + token);
         this.jwtTokenClientService.setToken(token);
         this.jwtTokenClientService.setUsername(this.userModel.userName);
         this.router.navigate(['/home/myCards']);

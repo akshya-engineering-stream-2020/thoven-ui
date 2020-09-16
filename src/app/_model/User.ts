@@ -10,11 +10,4 @@ export class UserDetails {
   public username: string;
   public tribe: string;
   public feature: string;
-  public groupInfos: GroupInfoList[];
-}
-
-export class GroupInfoList {
-  public groupInfoId: number;
-  public groupName: string;
-  public groupDesp: string;
 }

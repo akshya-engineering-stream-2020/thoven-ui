@@ -17,37 +17,38 @@
     </button>
   </div>
   <div class="modal-body">
-    <form>
+    <form role="form" #createCard="ngForm" (ngSubmit)="onSubmitCreateCard()">
       <div class="form-group">
-        <label for="inputAddress">Card Name</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        <label for="cardTitle">Card Name</label>
+        <input type="text" autocomplete="off" required #cardTitle="ngModel" class="form-control"
+               name="cardTitle" [(ngModel)]="cardModel.cardTitle" id="cardTitle" placeholder="Card Name">
       </div>
       <div class="form-group">
-        <label for="inputAddress2">URL</label>
-        <textarea type="text" class="form-control" id="inputAddress2"
-                  placeholder="Apartment, studio, or floor"></textarea>
+        <label for="cardUrl">URL</label>
+        <textarea type="text" required #cardUrl="ngModel" class="form-control"
+                  name="cardUrl" [(ngModel)]="cardModel.cardUrl" id="cardUrl"
+                  placeholder="eg. www.socgen.com"></textarea>
       </div>
       <div class="form-group">
-        <label for="inputAddress2">Description</label>
-        <textarea type="text" class="form-control" id="inputAddress3"
-                  placeholder="Apartment, studio, or floor"></textarea>
+        <label for="cardDesp">Description</label>
+        <textarea type="text" required #cardDesp="ngModel" class="form-control"
+                  name="cardDesp" [(ngModel)]="cardModel.cardDesp" id="cardDesp"
+                  placeholder="Describe the card..."></textarea>
       </div>
       <div class="form-group">
-        <label for="inputState">Group</label>
-        <select id="inputState" class="form-control">
-          <option selected>A</option>
-          <option>B</option>
-          <option>C</option>
-          <option>D</option>
+        <label for="groupName">Group</label>
+        <select id="groupName" required #groupName="ngModel" class="form-control"
+                name="groupName" [(ngModel)]="formGroupModel.groupName">
+          <option selected>none</option>
+          <option *ngFor="let groupModel of groupModels"
+                  value="{{groupModel.groupName}}">{{groupModel.groupName}}</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="inputState1">Level</label>
-        <select id="inputState1" class="form-control">
-          <option selected>none</option>
-          <option>feature</option>
-          <option>tribe</option>
-          <option>support</option>
+        <label for="cardLevel">Level</label>
+        <select id="cardLevel" required #cardLevel="ngModel" class="form-control"
+                name="cardLevel" [(ngModel)]="cardModel.cardLevel">
+          <option *ngFor="let userLevel of userLevels">{{userLevel}}</option>
         </select>
       </div>
 
