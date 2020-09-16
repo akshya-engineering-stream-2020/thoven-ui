@@ -12,7 +12,7 @@ import {UserDetails} from '../_model/User';
   styleUrls: ['./dashboard-add-button.component.scss']
 })
 export class DashboardAddButtonComponent implements OnInit {
-  @Input() level: string;
+  @Input() level?: string;
 
   userDetails = new UserDetails();
   cardModel = new Cards();
