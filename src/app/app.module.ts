@@ -10,6 +10,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import {MultiSelectAllModule} from '@syncfusion/ej2-angular-dropdowns';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -50,7 +51,8 @@ import {LoginComponent} from './login/login.component';
     MatFormFieldModule,
     MatInputModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MultiSelectAllModule
   ],
   providers: [],
   bootstrap: [AppComponent]

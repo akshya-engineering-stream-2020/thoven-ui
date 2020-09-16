@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardAddButtonComponent } from './dashboard-add-button.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {FormsModule} from '@angular/forms';
 
 describe('DashboardAddButtonComponent', () => {
   let component: DashboardAddButtonComponent;
@@ -8,6 +10,7 @@ describe('DashboardAddButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule, FormsModule ],
       declarations: [ DashboardAddButtonComponent ]
     })
     .compileComponents();
