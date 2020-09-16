@@ -14,7 +14,6 @@ export class CreateGroupComponent implements OnInit {
   groupModel = new Group();
   userList: UserDetails[] = [];
   public value: string[];
-  createGroupWithUser = new Map();
 
   public localFields: Object = {text: 'username', value: 'userInfoId'};
   public localWaterMark: string = 'Select group members';
@@ -31,12 +30,6 @@ export class CreateGroupComponent implements OnInit {
   }
 
   onSubmitCreateGroup(form: NgForm): void {
-    this.createGroupWithUser.set(this.groupModel, form.value.name);
-    this.apiService.createGroup(this.createGroupWithUser).subscribe(data => {
-      console.log('group' + data);
-    });
-    console.log(this.groupModel);
-    console.log(form.value.name);
   }
 
 }
