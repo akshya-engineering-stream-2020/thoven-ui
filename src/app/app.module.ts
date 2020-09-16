@@ -11,6 +11,7 @@ import {MatInputModule} from '@angular/material/input';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {MultiSelectAllModule} from '@syncfusion/ej2-angular-dropdowns';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -52,7 +53,8 @@ import {LoginComponent} from './login/login.component';
     MatInputModule,
     HttpClientModule,
     FormsModule,
-    MultiSelectAllModule
+    MultiSelectAllModule,
+    ClipboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

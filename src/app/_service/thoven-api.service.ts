@@ -23,12 +23,7 @@ export class ThovenApiService {
 
   public getAllUsers(): Observable<any[]> {
     const headers = this.createHeaders();
-    return this.http.get<any[]>('http://localhost:8888/api/v1/thoven/user', {headers});
-  }
-
-  public createGroup(groupUserDetails): Observable<any> {
-    const headers = this.createHeaders();
-    return this.http.post('http://localhost:8888/api/v1/thoven/group/create-group', groupUserDetails, {headers});
+    return this.http.get<any[]>('http://localhost:8888/api/v1/thoven/users', {headers});
   }
 
   public getAllGroupsOfUser(userinfo): Observable<any[]> {
@@ -44,6 +39,46 @@ export class ThovenApiService {
   public createCard(cardInfo): Observable<any> {
     const headers = this.createHeaders();
     return this.http.post('http://localhost:8888/api/v1/thoven/create-card', cardInfo, {headers, responseType: 'text' as 'json'});
+  }
+
+  public getAllGroupsAdminDetailsOfUser(userinfo): Observable<any[]> {
+    const headers = this.createHeaders();
+    return this.http.post<any[]>('http://localhost:8888/api/v1/thoven/user-groups-admin-details', userinfo, {headers});
+  }
+
+  public getCountOfCardsOfGroup(groupInfo): Observable<any> {
+    const headers = this.createHeaders();
+    return this.http.post('http://localhost:8888/api/v1/thoven/count-cards', groupInfo, {headers});
+  }
+
+  public getCardsOfGroup(groupnfo): Observable<any[]> {
+    const headers = this.createHeaders();
+    return this.http.post<any[]>('http://localhost:8888/api/v1/thoven/group-cards', groupnfo, {headers});
+  }
+
+  public getCountOfMembersOfGroup(groupInfo): Observable<any> {
+    const headers = this.createHeaders();
+    return this.http.post('http://localhost:8888/api/v1/thoven/count-members', groupInfo, {headers});
+  }
+
+  public getUsersOfGroup(groupnfo): Observable<any[]> {
+    const headers = this.createHeaders();
+    return this.http.post<any[]>('http://localhost:8888/api/v1/thoven/group-members', groupnfo, {headers});
+  }
+
+  public generateShortUrl(cardId: number, longUrl): Observable<string> {
+    const headers = this.createHeaders();
+    return this.http.post<string>('http://localhost:8888/thoven/url-shortener/' + cardId, longUrl, {headers});
+  }
+
+  public createGroup(groupInfo): Observable<any> {
+    const headers = this.createHeaders();
+    return this.http.post('http://localhost:8888/api/v1/thoven/create-group', groupInfo, {headers});
+  }
+
+  public createUserGroups(userGroupInfo): Observable<any> {
+    const headers = this.createHeaders();
+    return this.http.post('http://localhost:8888/api/v1/thoven/create-user-groups', userGroupInfo, {headers});
   }
 
   public createHeaders(): HttpHeaders {

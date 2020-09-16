@@ -1,67 +1,12 @@
-<div class="row mb-5 mt-2 group-card-space" *ngIf="!isGroupCardCalled">
+<div class="row mb-2 mt-2 group-card-space" *ngIf="!isGroupCardCalled">
   <h3>Owner</h3>
   <div class="d-flex justify-content-start">
-    <div class="card mb-2 mr-2 card-hover" (click)="callGroup()" style="width: 15rem;">
-      <h6 class="card-header">Featured</h6>
+    <div class="card mb-2 mr-2 card-hover" *ngFor="let ownerGroup of ownerGroups"
+         (click)="callGroup(ownerGroup.groupInfo)" style="width: 15rem;">
+      <h6 class="card-header">{{ownerGroup.groupInfo.groupName}}</h6>
       <div class="card-body">
-        <h6 class="card-title">Special title treatment</h6>
-        <p class="text-secondary">Created By</p>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2 card-hover" style="width: 15rem;">
-      <h6 class="card-header">Featured</h6>
-      <div class="card-body">
-        <h6 class="card-title">Special title treatment</h6>
-        <p class="text-secondary">Created By</p>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2 card-hover" style="width: 15rem;">
-      <h6 class="card-header">Featured</h6>
-      <div class="card-body">
-        <h6 class="card-title">Special title treatment</h6>
-        <p class="text-secondary">Created By</p>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2 card-hover" style="width: 15rem;">
-      <h6 class="card-header">Featured</h6>
-      <div class="card-body">
-        <h6 class="card-title">Special title treatment</h6>
-        <p class="text-secondary">Created By</p>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2 card-hover" style="width: 15rem;">
-      <h6 class="card-header">Featured</h6>
-      <div class="card-body">
-        <h6 class="card-title">Special title treatment</h6>
-        <p class="text-secondary">Created By</p>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2 card-hover" style="width: 15rem;">
-      <h6 class="card-header">Featured</h6>
-      <div class="card-body">
-        <h6 class="card-title">Special title treatment</h6>
-        <p class="text-secondary">Created By</p>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2 card-hover" style="width: 15rem;">
-      <h6 class="card-header">Featured</h6>
-      <div class="card-body">
-        <h6 class="card-title">Special title treatment</h6>
-        <p class="text-secondary">Created By</p>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2 card-hover" style="width: 15rem;">
-      <h6 class="card-header">Featured</h6>
-      <div class="card-body">
-        <h6 class="card-title">Special title treatment</h6>
-        <p class="text-secondary">Created By</p>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2 card-hover" style="width: 15rem;">
-      <h6 class="card-header">Featured</h6>
-      <div class="card-body">
-        <h6 class="card-title">Special title treatment</h6>
-        <p class="text-secondary">Created By</p>
+        <h6 class="card-title">{{ownerGroup.groupInfo.groupDesp}}</h6>
+        <p class="text-secondary">Cards: {{ownerGroup.cardsCount}} Members: {{ownerGroup.membersCount}}</p>
       </div>
     </div>
   </div>
@@ -70,67 +15,11 @@
 <div class="row group-card-space" *ngIf="!isGroupCardCalled">
   <h3>User</h3>
   <div class="d-flex justify-content-start">
-    <div class="card mb-2 mr-2 card-hover" style="width: 15rem;">
-      <h6 class="card-header">Featured</h6>
+    <div class="card mb-2 mr-2 card-hover" *ngFor="let userGroup of userGroups" style="width: 15rem;">
+      <h6 class="card-header">{{userGroup.groupInfo.groupName}}</h6>
       <div class="card-body">
-        <h6 class="card-title">Special title treatment</h6>
-        <p class="text-secondary">Created By</p>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2 card-hover" style="width: 15rem;">
-      <h6 class="card-header">Featured</h6>
-      <div class="card-body">
-        <h6 class="card-title">Special title treatment</h6>
-        <p class="text-secondary">Created By</p>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2 card-hover" style="width: 15rem;">
-      <h6 class="card-header">Featured</h6>
-      <div class="card-body">
-        <h6 class="card-title">Special title treatment</h6>
-        <p class="text-secondary">Created By</p>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2 card-hover" style="width: 15rem;">
-      <h6 class="card-header">Featured</h6>
-      <div class="card-body">
-        <h6 class="card-title">Special title treatment</h6>
-        <p class="text-secondary">Created By</p>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2 card-hover" style="width: 15rem;">
-      <h6 class="card-header">Featured</h6>
-      <div class="card-body">
-        <h6 class="card-title">Special title treatment</h6>
-        <p class="text-secondary">Created By</p>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2 card-hover" style="width: 15rem;">
-      <h6 class="card-header">Featured</h6>
-      <div class="card-body">
-        <h6 class="card-title">Special title treatment</h6>
-        <p class="text-secondary">Created By</p>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2 card-hover" style="width: 15rem;">
-      <h6 class="card-header">Featured</h6>
-      <div class="card-body">
-        <h6 class="card-title">Special title treatment</h6>
-        <p class="text-secondary">Created By</p>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2 card-hover" style="width: 15rem;">
-      <h6 class="card-header">Featured</h6>
-      <div class="card-body">
-        <h6 class="card-title">Special title treatment</h6>
-        <p class="text-secondary">Created By</p>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2 card-hover" style="width: 15rem;">
-      <h6 class="card-header">Featured</h6>
-      <div class="card-body">
-        <h6 class="card-title">Special title treatment</h6>
-        <p class="text-secondary">Created By</p>
+        <h6 class="card-title">{{userGroup.groupInfo.groupDesp}}</h6>
+        <p class="text-secondary">Cards: {{userGroup.cardsCount}} Members: {{userGroup.membersCount}}</p>
       </div>
     </div>
   </div>
@@ -150,72 +39,11 @@
     </div>
   </div>
   <div class="row group-card">
-    <div class="card mb-2 mr-2" style="width: 18rem;">
+    <div class="card mb-2 mr-2" *ngFor="let card of cards" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-      </div>
-    </div>
-    <div class="card mb-2 mr-2" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
+        <h5 class="card-title">{{card.cardTitle}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{card.cardLevel}}</h6>
+        <p class="card-text">{{card.cardDesp}}</p>
         <a href="#" class="card-link">Card link</a>
         <a href="#" class="card-link">Another link</a>
       </div>
@@ -241,30 +69,30 @@
   <div class="row">
     <mat-form-field>
       <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      <input autocomplete="off" matInput (keyup)="applyFilter($event)" placeholder="Ex. uername, email..." #input>
     </mat-form-field>
   </div>
 
-  <div class="example-container mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef> No.</th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-      </ng-container>
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name</th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-      </ng-container>
-      <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef> Weight</th>
-        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-      </ng-container>
-      <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef> Symbol</th>
-        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <div class="example-container">
+    <table class="table table-hover">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">Email</th>
+        <th scope="col">Tribe</th>
+        <th scope="col">Feature</th>
+        <th scope="col">Admin</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let usersOfGroup of usersOfGroups">
+        <td>{{usersOfGroup.userInfo.username}}</td>
+        <td>{{usersOfGroup.userInfo.email}}</td>
+        <td>{{usersOfGroup.userInfo.tribe}}</td>
+        <td>{{usersOfGroup.userInfo.feature}}</td>
+        <td>{{usersOfGroup.admin}}</td>
+      </tr>
+      </tbody>
     </table>
   </div>
 

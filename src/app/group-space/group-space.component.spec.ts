@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { GroupSpaceComponent } from './group-space.component';
+import {GroupSpaceComponent} from './group-space.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('GroupSpaceComponent', () => {
   let component: GroupSpaceComponent;
@@ -8,6 +9,7 @@ describe('GroupSpaceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ],
       declarations: [ GroupSpaceComponent ]
     })
     .compileComponents();
