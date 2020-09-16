@@ -12,8 +12,7 @@
                 [(ngModel)]="groupModel.groupDesp"></textarea>
     </div>
     <div class="form-group">
-      <ejs-multiselect id='localData' #local="ngModel" [(value)]="value" [(ngModel)]="value"
-                       [dataSource]='userList' [fields]='localFields' [placeholder]='localWaterMark'></ejs-multiselect>
+      <ejs-multiselect id='localData' [dataSource]='userList' [fields]='localFields' [placeholder]='localWaterMark'></ejs-multiselect>
     </div>
     <button type="submit" class="btn btn-outline-primary" ejs-button>Create</button>
   </form>
