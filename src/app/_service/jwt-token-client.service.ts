@@ -9,12 +9,14 @@ export class JwtTokenClientService {
 
   token: string;
   userName: string;
+  baseUrl: string;
 
   constructor(private http: HttpClient) {
+    this.baseUrl = 'https://thoven-api.herokuapp.com';
   }
 
   public generateToken(request): Observable<any> {
-    return this.http.post('http://localhost:8888/api/v1/thoven/authenticate', request, {responseType: 'text' as 'json'});
+    return this.http.post(this.baseUrl + '/api/v1/thoven/authenticate', request, {responseType: 'text' as 'json'});
   }
 
   public setToken(token): void {

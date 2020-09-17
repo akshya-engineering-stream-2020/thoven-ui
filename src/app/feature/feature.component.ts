@@ -24,7 +24,7 @@ export class FeatureComponent implements OnInit {
               private jwtTokenClientService: JwtTokenClientService) {
     this.isShortUrlGenerated = false;
     this.shortUrl = '';
-    this.baseUrl = 'http://localhost:8888/thoven/';
+    this.baseUrl = 'https://thoven-api.herokuapp.com/thoven/';
   }
 
   ngOnInit(): void {
