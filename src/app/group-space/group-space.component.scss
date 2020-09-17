@@ -60,3 +60,16 @@ table {
   width: 80%;
   overflow: auto;
 }
+
+mat-icon {
+  cursor: pointer;
+}
+
+mat-icon:hover {
+  color: #7386D5;
+}
+
+label {
+  color: #04204e;
+  font-weight: bold;
+}

@@ -44,12 +44,75 @@
         <h5 class="card-title">{{card.cardTitle}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{card.cardLevel}}</h6>
         <p class="card-text">{{card.cardDesp}}</p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+        <a href="{{card.cardUrl}}" target="_blank" class="card-link">Open link</a>
+        <div class="float-right">
+          <mat-icon (click)="openScrollableContentDelete(deletedCardModal,card)">delete</mat-icon>
+          <mat-icon (click)="openScrollableContentUpdate(UpdatedCardModal,card)">edit</mat-icon>
+        </div>
       </div>
     </div>
   </div>
   <app-dashboard-add-button></app-dashboard-add-button>
+  <ng-template #deletedCardModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Delete Card</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      Are you sure to delete this card?
+      <button mat-flat-button class="mr-2" color="warn" (click)="deleteCard()">Yes</button>
+      <button mat-flat-button color="primary" (click)="modal.close('Close click')">No</button>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
+  <ng-template #UpdatedCardModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Update Card</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form role="form" #updateCard="ngForm" (ngSubmit)="onSubmitUpdateCard()">
+        <div class="form-group">
+          <label for="cardTitle">Card Name</label>
+          <input type="text" autocomplete="off" required #cardTitle="ngModel" class="form-control"
+                 name="cardTitle" [value]="saveCard.cardTitle" [(ngModel)]="saveCard.cardTitle" id="cardTitle"
+                 placeholder="Card Name">
+        </div>
+        <div class="form-group">
+          <label for="cardUrl">URL</label>
+          <textarea type="text" required #cardUrl="ngModel" class="form-control"
+                    name="cardUrl" [value]="saveCard.cardUrl" [(ngModel)]="saveCard.cardUrl" id="cardUrl"
+                    placeholder="eg. www.socgen.com"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="cardDesp">Description</label>
+          <textarea type="text" required #cardDesp="ngModel" class="form-control"
+                    name="cardDesp" [value]="saveCard.cardDesp" [(ngModel)]="saveCard.cardDesp" id="cardDesp"
+                    placeholder="Describe the card..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="groupName">Group</label>
+          <input disabled id="groupName" type="text" class="form-control" [value]="saveCard.groupInfo.groupName">
+        </div>
+        <div class="form-group">
+          <label for="cardLevel">Level</label>
+          <input type="text" autocomplete="off" required #cardLevel="ngModel" class="form-control"
+                 name="cardLevel" [value]="saveCard.cardLevel" [(ngModel)]="saveCard.cardLevel" id="cardLevel">
+        </div>
+
+        <button type="submit" class="btn btn-outline-primary">Update</button>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
 </div>
 
 <div class="row" *ngIf="isGroupCardCalled && isGroupMemberCalled">
@@ -63,7 +126,31 @@
         <mat-icon>style</mat-icon>
         Cards
       </button>
+      <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon"
+              ngbPopover="Add Member" triggers="mouseenter:mouseleave" class="ml-3">
+        <mat-icon (click)="openScrollableContentAddMembers(addMembersModal)">group_add</mat-icon>
+      </button>
     </div>
+    <ng-template #addMembersModal let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">Add Member</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form role="form" #addMember="ngForm" (ngSubmit)="onSubmitAddMember()">
+          <div class="form-group">
+            <ejs-multiselect id='localData' [(value)]="value" [dataSource]='userList' [fields]='localFields'
+                             [placeholder]='localWaterMark'></ejs-multiselect>
+          </div>
+          <button type="submit" class="btn btn-outline-primary">Add</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      </div>
+    </ng-template>
   </div>
 
   <div class="row">
@@ -72,6 +159,7 @@
       <input autocomplete="off" matInput (keyup)="applyFilter($event)" placeholder="Ex. uername, email..." #input>
     </mat-form-field>
   </div>
+
 
   <div class="example-container">
     <table class="table table-hover">
@@ -82,6 +170,7 @@
         <th scope="col">Tribe</th>
         <th scope="col">Feature</th>
         <th scope="col">Admin</th>
+        <th scope="col">Actions</th>
       </tr>
       </thead>
       <tbody>
@@ -91,10 +180,58 @@
         <td>{{usersOfGroup.userInfo.tribe}}</td>
         <td>{{usersOfGroup.userInfo.feature}}</td>
         <td>{{usersOfGroup.admin}}</td>
+        <td *ngIf="usersOfGroup.admin === 'no'">
+          <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon"
+                  ngbPopover="Add as Admin" triggers="mouseenter:mouseleave">
+            <mat-icon (click)="openScrollableContentAdminChange(adminChangeModal,usersOfGroup)">admin_panel_settings
+            </mat-icon>
+          </button>
+          <button mat-mini-fab color="primary" class="ml-2" aria-label="Example icon button with a menu icon"
+                  ngbPopover="Remove Memeber" triggers="mouseenter:mouseleave">
+            <mat-icon (click)="openScrollableContentRemoveMember(removeMemberModal,usersOfGroup)">remove_circle
+            </mat-icon>
+          </button>
+        </td>
+        <td *ngIf="usersOfGroup.admin === 'yes'"></td>
       </tr>
       </tbody>
     </table>
   </div>
+
+  <ng-template #adminChangeModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Admin Update</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      Are you sure to make <b>{{this.getSaveUsersOfGroup().userInfo.username}}</b> as Admin?
+      <button mat-flat-button class="mr-2" color="warn" (click)="adminChange()">Yes</button>
+      <button mat-flat-button color="primary" (click)="modal.close('Close click')">No</button>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
+  <ng-template #removeMemberModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Remove Member</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      Are you sure to remove <b>{{this.getSaveUsersOfGroup().userInfo.username}}</b> from
+      <b>{{this.getSaveUsersOfGroup().groupInfo.groupName}}</b>?
+      <div></div>
+      <button mat-flat-button class="mr-2" color="warn" (click)="removeMember()">Yes</button>
+      <button mat-flat-button color="primary" (click)="modal.close('Close click')">No</button>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
 
 </div>
 

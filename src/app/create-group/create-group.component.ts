@@ -48,7 +48,6 @@ export class CreateGroupComponent implements OnInit {
         });
       }
     );
-    window.location.reload();
   }
 
 }

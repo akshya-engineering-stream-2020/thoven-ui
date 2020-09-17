@@ -41,6 +41,7 @@ p {
 }
 
 a, a:hover {
+  cursor: pointer;
   color: inherit;
   text-decoration: none;
   transition: all 0.3s;

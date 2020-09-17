@@ -19,10 +19,10 @@ export class DashboardAddButtonComponent implements OnInit {
   groupModel = new Group();
   formGroupModel = new Group();
   groupModels: Group[] = [];
-  userLevels = ['none', 'feature', 'tribe', 'support'];
-  featureLevel = ['none', 'feature'];
-  tribeLevel = ['none', 'tribe'];
-  supportLevel = ['none', 'support'];
+  userLevels = ['feature', 'tribe', 'support'];
+  featureLevel = ['feature'];
+  tribeLevel = ['tribe'];
+  supportLevel = ['support'];
 
   constructor(private modalService: NgbModal, private apiService: ThovenApiService,
               private jwtTokenClientService: JwtTokenClientService) {

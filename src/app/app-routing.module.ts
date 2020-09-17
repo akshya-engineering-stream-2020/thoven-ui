@@ -8,6 +8,8 @@ import {SupportComponent} from './support/support.component';
 import {CreateGroupComponent} from './create-group/create-group.component';
 import {GroupSpaceComponent} from './group-space/group-space.component';
 import {LoginComponent} from './login/login.component';
+import {RequestGroupComponent} from './request-group/request-group.component';
+import {AnalysisComponent} from './analysis/analysis.component';
 
 const routes: Routes = [
   {path: 'home', component: MainNavbarComponent, children: [
@@ -16,7 +18,9 @@ const routes: Routes = [
       {path: 'tribe', component: TribeComponent},
       {path: 'support', component: SupportComponent},
       {path: 'create-group', component: CreateGroupComponent},
-      {path: 'group-space', component: GroupSpaceComponent}
+      {path: 'group-space', component: GroupSpaceComponent},
+      {path: 'request-group', component: RequestGroupComponent},
+      {path: 'analysis', component: AnalysisComponent},
     ]},
   {path: 'login', component: LoginComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'}

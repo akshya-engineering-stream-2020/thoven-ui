@@ -6,10 +6,38 @@
       <h5 class="card-title">{{cardDetail.cardTitle}}</h5>
       <h6 class="card-subtitle mb-2 text-muted">{{cardDetail.cardLevel}}</h6>
       <p class="card-text">{{cardDetail.cardDesp}}</p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
+      <button type="button" class="btn btn-outline-info" (click)="openScrollableContent(openShortUrl, cardDetail)">Short
+        Url
+      </button>
+      <a href="{{cardDetail.cardUrl}}" target="_blank" class="card-link ml-2">Open Url</a>
     </div>
   </div>
 </div>
 
 <app-dashboard-add-button [level]="level"></app-dashboard-add-button>
+
+<ng-template #openShortUrl let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Short Url</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div *ngIf="isShortUrlGenerated">
+      <p>{{shortUrl}}</p>
+      <button mat-raised-button color="primary" [cdkCopyToClipboard]="shortUrl">Copy to clipboard
+        <mat-icon>content_copy</mat-icon>
+      </button>
+    </div>
+    <div *ngIf="!isShortUrlGenerated">
+      <p>Looks like short url is not generated!</p>
+      <button mat-raised-button color="primary" (click)="generateShortUrl()">Generate Short Url
+        <mat-icon>link</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
