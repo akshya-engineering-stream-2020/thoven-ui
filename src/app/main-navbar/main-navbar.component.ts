@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {JwtTokenClientService} from '../_service/jwt-token-client.service';
 
 @Component({
   selector: 'app-main-navbar',
@@ -9,7 +10,8 @@ import {Router} from '@angular/router';
 export class MainNavbarComponent implements OnInit {
   selectedTab: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private jwtTokenClientService: JwtTokenClientService) {
+  }
 
   ngOnInit(): void {
   }
@@ -27,6 +29,21 @@ export class MainNavbarComponent implements OnInit {
   goGroupSpaceComponent(): void {
     this.selectedTab = 'groupSpace';
     this.router.navigate(['home/group-space']);
+  }
+
+  goRequestGroupComponent(): void {
+    this.selectedTab = 'requestGroup';
+    this.router.navigate(['home/request-group']);
+  }
+
+  goAnalysisComponent(): void {
+    this.selectedTab = 'analysis';
+    this.router.navigate(['home/analysis']);
+  }
+
+  onLogout(): void {
+    this.jwtTokenClientService.setToken(null);
+    this.router.navigate(['/login']);
   }
 
 }

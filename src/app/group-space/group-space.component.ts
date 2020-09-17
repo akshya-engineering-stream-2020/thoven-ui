@@ -5,6 +5,7 @@ import {UserDetails} from '../_model/User';
 import {Group} from '../_model/Group';
 import {UserGroup} from '../_model/UserGroup';
 import {Cards} from '../_model/Card';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-group-space',
@@ -22,8 +23,17 @@ export class GroupSpaceComponent implements OnInit {
   saveGroupInfo = new Group();
   usersOfGroups: UserGroup[] = [];
   saveUsersOfGroups: UserGroup[] = [];
+  saveUsersOfGroup = new UserGroup();
+  saveCard = new Cards();
+  userList: UserDetails[] = [];
+  public value: string[];
+  addMemberUserGroup = new UserGroup();
 
-  constructor(private apiService: ThovenApiService, private jwtTokenClientService: JwtTokenClientService) {
+  public localFields: Object = {text: 'username', value: 'username'};
+  public localWaterMark: string = 'Select group members';
+
+  constructor(private modalService: NgbModal, private apiService: ThovenApiService,
+              private jwtTokenClientService: JwtTokenClientService) {
     this.isGroupCardCalled = false;
     this.isGroupMemberCalled = false;
   }
@@ -122,6 +132,91 @@ export class GroupSpaceComponent implements OnInit {
 
   getSaveUsersOfGroups() {
     return this.saveUsersOfGroups;
+  }
+
+  openScrollableContentDelete(deteleCardModal, card): void {
+    this.modalService.open(deteleCardModal, {scrollable: true});
+    this.setSaveCard(card);
+  }
+
+  openScrollableContentUpdate(updateCardModal, card): void {
+    this.modalService.open(updateCardModal, {scrollable: true});
+    this.setSaveCard(card);
+  }
+
+  openScrollableContentAdminChange(adminChangeModal, usersOfGroup): void {
+    this.modalService.open(adminChangeModal, {scrollable: true});
+    this.setSaveUsersOfGroup(usersOfGroup);
+  }
+
+  openScrollableContentRemoveMember(removeMemberModal, usersOfGroup): void {
+    this.modalService.open(removeMemberModal, {scrollable: true});
+    this.setSaveUsersOfGroup(usersOfGroup);
+  }
+
+  openScrollableContentAddMembers(addMembersModal): void {
+    this.modalService.open(addMembersModal, {scrollable: true});
+    this.apiService.getAllUsers().subscribe(
+      data => {
+        this.userList = data as UserDetails[];
+        this.userList = this.userList.filter(x => x.username != this.jwtTokenClientService.getUsername());
+      }
+    );
+  }
+
+  deleteCard() {
+    this.apiService.deleteCardByCardId(this.getSaveCard().cardInfoId).subscribe();
+  }
+
+  onSubmitUpdateCard() {
+    this.apiService.updateCardByCardId(this.getSaveCard().cardInfoId, this.getSaveCard()).subscribe(
+      updatedCard => {
+        console.log('updated', updatedCard);
+      }
+    );
+  }
+
+  adminChange() {
+    this.getSaveUsersOfGroup().admin = 'yes';
+    this.setSaveUsersOfGroup(this.getSaveUsersOfGroup());
+    this.apiService.updateUserGroupByUserGroupId(this.getSaveUsersOfGroup().userGroupInfoId, this.getSaveUsersOfGroup())
+      .subscribe(updatedUserGroup => {
+        console.log('sucess', updatedUserGroup);
+      });
+  }
+
+  removeMember() {
+    this.apiService.deleteUserGroupByUserGroupId(this.getSaveUsersOfGroup().userGroupInfoId)
+      .subscribe();
+  }
+
+  onSubmitAddMember() {
+    this.value.filter(user => {
+      this.apiService.getUserInfoByUsername(user).subscribe(userDetail => {
+        this.addMemberUserGroup.userInfo = userDetail;
+        this.addMemberUserGroup.groupInfo = this.getSavGroupInfo();
+        this.addMemberUserGroup.admin = 'no';
+        this.apiService.createUserGroups(this.addMemberUserGroup).subscribe(userGroup => {
+          console.log(userGroup, '**************');
+        });
+      });
+    });
+  }
+
+  setSaveCard(card) {
+    this.saveCard = card;
+  }
+
+  getSaveCard() {
+    return this.saveCard;
+  }
+
+  setSaveUsersOfGroup(usersOfGroup) {
+    this.saveUsersOfGroup = usersOfGroup;
+  }
+
+  getSaveUsersOfGroup() {
+    return this.saveUsersOfGroup;
   }
 
 }

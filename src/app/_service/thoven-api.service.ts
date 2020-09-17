@@ -81,6 +81,27 @@ export class ThovenApiService {
     return this.http.post('http://localhost:8888/api/v1/thoven/create-user-groups', userGroupInfo, {headers});
   }
 
+  public deleteCardByCardId(cardId): Observable<any> {
+    const headers = this.createHeaders();
+    return this.http.delete('http://localhost:8888/api/v1/thoven/delete-card/' + cardId, {headers});
+  }
+
+  public updateCardByCardId(cardId, cardInfo): Observable<any> {
+    const headers = this.createHeaders();
+    return this.http.put('http://localhost:8888/api/v1/thoven/update-card/' + cardId, cardInfo, {headers});
+  }
+
+  public updateUserGroupByUserGroupId(userGroupId, userGroupInfo): Observable<any> {
+    const headers = this.createHeaders();
+    return this.http.put('http://localhost:8888/api/v1/thoven/update-user-group/' + userGroupId, userGroupInfo, {headers});
+  }
+
+  public deleteUserGroupByUserGroupId(userGroupId): Observable<any> {
+    const headers = this.createHeaders();
+    return this.http.delete('http://localhost:8888/api/v1/thoven/delete-user-group/' + userGroupId, {headers});
+  }
+
+
   public createHeaders(): HttpHeaders {
     let tokenString = 'Bearer ' + this.jwtTokenClientService.getToken();
     return new HttpHeaders().set('Authorization', tokenString);
