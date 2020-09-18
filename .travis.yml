@@ -21,6 +21,7 @@ cache:
 
 install:
   - npm install
+  - npm install codecov -g
 
 script:
   - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
@@ -28,3 +29,4 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+  - codecov
