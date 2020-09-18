@@ -24,6 +24,7 @@ install:
 
 script:
   - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+  - codecov -f coverage/*.json
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
